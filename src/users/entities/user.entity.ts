@@ -14,13 +14,17 @@ export class User {
   @Column({name: 'cpf', nullable: false, unique: true})
   cpf: string;
 
-  @Column({name: 'biografia'})
-  biografia: string;
+  @Column({name: 'biography'})
+  biography: string;
 
-  @Column({name: 'foto'})
-  foto: string;
+  @Column({name: 'photo'})
+  photo: string;
 
   @Column({name: 'password'})
   password: string;
+
+  @Column({name: 'active'})
+  active: boolean;
+  
 }
 
