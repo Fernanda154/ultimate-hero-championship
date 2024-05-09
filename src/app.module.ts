@@ -6,6 +6,7 @@ import { SuperHeroModule } from './super_hero/super_hero.module';
 import { AttributeModule } from './attribute/attribute.module';
 import { SuperpowerModule } from './superpower/superpower.module';
 import { BattleModule } from './battle/battle.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { BattleModule } from './battle/battle.module';
     SuperHeroModule,
     AttributeModule,
     SuperpowerModule,
-    BattleModule
+    BattleModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],

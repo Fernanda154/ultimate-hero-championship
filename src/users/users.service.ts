@@ -16,7 +16,7 @@ export class UsersService {
   async create(createUserDto: CreateUserDto) {
     const checkUser = await this.usersRepository.findOne({ where: [
       { cpf: createUserDto.cpf },
-      { email: createUserDto.email} // Use Like para procurar um e-mail parcialmente correspondente
+      { email: createUserDto.email} 
     ]});
    
     if(checkUser){
