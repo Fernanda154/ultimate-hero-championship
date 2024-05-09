@@ -9,7 +9,7 @@ import { HttpException, HttpStatus } from '@nestjs/common';
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly jwtService: JwtService, 
+    private readonly jwtService: JwtService,
 
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,) {}
@@ -20,22 +20,16 @@ export class AuthService {
         { email: payload.email} 
       ]});
       if (!checkUser) {
-        throw new HttpException('Credenciais inválidas -.-', HttpStatus.BAD_REQUEST);
+        throw new HttpException('Credenciais inválidas -.-', HttpStatus.UNAUTHORIZED);
       }else{
         if(checkUser.password == payload.password){
           const jwt = this.jwtService.signAsync(payload);
           console.log("JWT", jwt);
           return jwt;
         }else{
-          throw new HttpException('Credenciais inválidas -.-', HttpStatus.BAD_REQUEST);
+          throw new HttpException('Credenciais inválidas -.-', HttpStatus.UNAUTHORIZED);
         }
       }
     }
 
-  async login(payload: any) {
-    console.log('aaaaaaa', payload);
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
-  }
 }
