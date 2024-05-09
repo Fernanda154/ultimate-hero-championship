@@ -6,7 +6,7 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=superhero
     ports:
-      - "3000:5432"
+      - "3000:5433"
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
       - ./create-db.sql:/docker-entrypoint-initdb.d/create_db.sql
