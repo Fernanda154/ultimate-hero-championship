@@ -7,17 +7,18 @@ export class Battle {
     id: number;
 
     @ManyToOne(() => SuperHero)
-    winner: number;
+    winner_id: number;
 
     @ManyToOne(() => SuperHero)
-    hero1: number;
+    hero1_id: number;
 
     @Column()
     power1: number;
 
     @ManyToOne(() => SuperHero)
-    hero2: number;
+    hero2_id: number;
 
     @Column()
     power2: number;
+
 }

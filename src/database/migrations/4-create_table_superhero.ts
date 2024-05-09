@@ -18,6 +18,14 @@ export class CreateTableSuperhero1715217617708 implements MigrationInterface {
                   name: "name",
                   type: "varchar",
                 },
+                {
+                  name: "attributeId",
+                  type: "int"
+                },
+                {
+                  name: "superPowerId",
+                  type: "int"
+                },
               ],
             })
         );
@@ -33,7 +41,7 @@ export class CreateTableSuperhero1715217617708 implements MigrationInterface {
         await queryRunner.createForeignKey(
           "superhero",
           new TableForeignKey({
-              columnNames: ["powerId"],
+              columnNames: ["superPowerId"],
               referencedColumnNames: ["id"],
               referencedTableName: "superpower",
               onDelete: "SET NULL",

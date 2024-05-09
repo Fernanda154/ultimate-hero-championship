@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateTableAttribute1715217599368 implements MigrationInterface {
+export class CreateTableSuperpower1715217576682 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-              name: "attribute",
+              name: "superpower",
               columns: [
                 {
                   name: "id",
@@ -17,6 +17,10 @@ export class CreateTableAttribute1715217599368 implements MigrationInterface {
                 {
                   name: "name",
                   type: "varchar",
+                },
+                {
+                  name: "value",
+                  type: "int",
                 },
               ],
             })

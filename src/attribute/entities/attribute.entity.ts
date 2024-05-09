@@ -7,4 +7,7 @@ export class Attribute {
 
     @Column({name: 'name', nullable: false})
     name: string;
+
+    @Column({name: 'value', nullable: false})
+    value: number;
 }

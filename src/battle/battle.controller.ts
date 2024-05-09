@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { BattleService } from './battle.service';
 import { CreateBattleDto } from './dto/create-battle.dto';
 import { UpdateBattleDto } from './dto/update-battle.dto';
@@ -7,9 +7,12 @@ import { UpdateBattleDto } from './dto/update-battle.dto';
 export class BattleController {
   constructor(private readonly battleService: BattleService) {}
 
-  @Post()
-  create(@Body() createBattleDto: CreateBattleDto) {
-    return this.battleService.create(createBattleDto);
+  @Post(':superHeroId1/fight/:superHeroId2')
+  async associateAttribute(
+    @Param('superHeroId1', ParseIntPipe) superHeroId1: number,
+    @Param('superHeroId2', ParseIntPipe) superHeroId2: number,
+  ) {
+    return this.battleService.create(superHeroId1, superHeroId2);
   }
 
   @Get()

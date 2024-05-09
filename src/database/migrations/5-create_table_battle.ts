@@ -41,21 +41,21 @@ export class CreateTableBattle1715217630731 implements MigrationInterface {
        await queryRunner.createForeignKey('battle', new TableForeignKey({
             columnNames: ['winner_id'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'hero',
+            referencedTableName: 'superhero',
             onDelete: 'CASCADE'
         }));
 
         await queryRunner.createForeignKey('battle', new TableForeignKey({
             columnNames: ['hero1_id'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'hero',
+            referencedTableName: 'superhero',
             onDelete: 'CASCADE'
         }));
 
         await queryRunner.createForeignKey('battle', new TableForeignKey({
             columnNames: ['hero2_id'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'hero',
+            referencedTableName: 'superhero',
             onDelete: 'CASCADE'
         }));
         }

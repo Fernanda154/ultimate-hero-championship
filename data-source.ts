@@ -1,6 +1,5 @@
 import { DataSource, DataSourceOptions } from "typeorm";
 import { SeederOptions } from "typeorm-extension";
-import { join } from 'path';
 
 const options: DataSourceOptions & SeederOptions= {
   type: "postgres",
@@ -8,7 +7,7 @@ const options: DataSourceOptions & SeederOptions= {
   port: 5433,
   username: "postgres",
   password: "admin",
-  database: "UHC",
+  database: "superhero",
   entities: ["src/entities/*.ts"],
   migrations: ["src/database/migrations/*.ts"],
 };

@@ -14,7 +14,7 @@ export class SuperHero {
     @JoinColumn({ name: 'attribute_id' }) 
     attribute: Attribute;
 
-    @ManyToOne(() => Attribute, { nullable: true })
+    @ManyToOne(() => Superpower, { nullable: true })
     @JoinColumn({ name: 'superpower_id' }) 
     superpower: Superpower;
 }

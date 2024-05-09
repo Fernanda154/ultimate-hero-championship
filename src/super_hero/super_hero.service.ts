@@ -27,7 +27,9 @@ export class SuperHeroService {
   }
 
   async findAll() {
-    return await this.herosRepository.find();
+    return await this.herosRepository.find({
+      relations: ['attribute', 'superpower'], 
+    });
   }
 
   async associateAttribute(superHeroId: number, attributeId: number): Promise<SuperHero> {
@@ -44,7 +46,7 @@ export class SuperHeroService {
 
   async associateSuperPower(superHeroId: number, superPowerId: number): Promise<SuperHero> {
     const superHero = await this.herosRepository.findOne({where: {id: superHeroId}} );
-    const superpower = await this.attributeRepository.findOne({where: {id: superPowerId}});
+    const superpower = await this.superPowerRepository.findOne({where: {id: superPowerId}});
     
     if (!superHero || !superpower) {
       throw new Error('Superhero ou Super Poder não encontrados.');
