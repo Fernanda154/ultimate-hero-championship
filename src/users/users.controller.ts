@@ -9,7 +9,6 @@ export class UsersController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    console.log("entrei no controller");
     return this.usersService.create(createUserDto);
   }
 
@@ -26,6 +25,12 @@ export class UsersController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
+  }
+
+  @Patch('/inactivate/:id') 
+  inactivate(@Param('id') id: string) {
+    console.log('to certo', id);
+    return this.usersService.inactivate(+id);
   }
 
   @Delete(':id')

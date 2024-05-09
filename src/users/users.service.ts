@@ -56,4 +56,14 @@ export class UsersService {
     }
     return await this.usersRepository.remove(user);
   }
+
+  async inactivate(id: number){
+    const user = await this.usersRepository.findOne({where: {id}});
+    if(!user){
+      throw new HttpException('Usuário não encontrado.', HttpStatus.BAD_REQUEST);
+    }else{
+      user.active = false;
+      return await this.usersRepository.save(user);
+    }
+  }
 }
