@@ -2,6 +2,10 @@ import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config'
+import { SuperHeroModule } from './super_hero/super_hero.module';
+import { AttributeModule } from './attribute/attribute.module';
+import { SuperpowerModule } from './superpower/superpower.module';
+import { BattleModule } from './battle/battle.module';
 
 @Module({
   imports: [
@@ -17,7 +21,11 @@ import { ConfigModule } from '@nestjs/config'
       migrations: [__dirname + '/database/migrations/*{.js,.ts}'],
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
-    })
+    }),
+    SuperHeroModule,
+    AttributeModule,
+    SuperpowerModule,
+    BattleModule
   ],
   controllers: [],
   providers: [],
