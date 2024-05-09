@@ -14,30 +14,28 @@ export class AuthService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,) {}
 
-  async createToken(payload: CreateAuthDto): Promise<string> {
-    const checkUser = await this.userRepository.findOne({ where: [
-      { cpf: payload.cpf } ||
-      { email: payload.email} 
-    ]});
-    if (!checkUser) {
-      throw new HttpException('Credenciais inválidas -.-', HttpStatus.BAD_REQUEST);
-    }else{
-      if(checkUser.password == payload.password){
-        const jwt = this.jwtService.sign(payload);
-        console.log("JWT", jwt);
-        return jwt;
-      }else{
+    async createToken(payload: CreateAuthDto): Promise<string> {
+      const checkUser = await this.userRepository.findOne({ where: [
+        { cpf: payload.cpf } ||
+        { email: payload.email} 
+      ]});
+      if (!checkUser) {
         throw new HttpException('Credenciais inválidas -.-', HttpStatus.BAD_REQUEST);
+      }else{
+        if(checkUser.password == payload.password){
+          const jwt = this.jwtService.signAsync(payload);
+          console.log("JWT", jwt);
+          return jwt;
+        }else{
+          throw new HttpException('Credenciais inválidas -.-', HttpStatus.BAD_REQUEST);
+        }
       }
     }
-  }
 
-  async verifyToken(token: string): Promise<any> {
-    console.log("token", token);
-    try {
-      return this.jwtService.verify(token);
-    } catch (error) {
-      throw new HttpException('Toquinho inválido', HttpStatus.BAD_REQUEST);
-    }
+  async login(payload: any) {
+    console.log('aaaaaaa', payload);
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 }

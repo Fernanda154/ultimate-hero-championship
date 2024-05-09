@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Request, UseGuards, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 
@@ -12,10 +12,5 @@ export class AuthController {
     return { token };
   }
 
-  @Post('verify-jwt')
-  async verifyJWT(@Body() token: string) {
-    const verification = await this.authService.verifyToken(token);
-    return { verification };
-  }
 
 }
