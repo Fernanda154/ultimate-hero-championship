@@ -9,6 +9,7 @@ export class UsersController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
+    console.log("entrei no controller");
     return this.usersService.create(createUserDto);
   }
 
