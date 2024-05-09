@@ -5,7 +5,7 @@ export class CreateTableAttribute1715217599368 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-              name: "superhero",
+              name: "attribute",
               columns: [
                 {
                   name: "id",

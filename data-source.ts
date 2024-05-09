@@ -8,10 +8,8 @@ const options: DataSourceOptions & SeederOptions= {
   port: 5433,
   username: "postgres",
   password: "admin",
-  database: "superhero",
-  entities: [join(__dirname, "entities", "*.{ts,js}")],
-  seeds: ["src/database/seeds/**/*{.ts,.js}"],
-  seedTracking: false,
-  migrations: [join(__dirname, "database", "migrations", "*.{ts,js}")],
+  database: "UHC",
+  entities: ["src/entities/*.ts"],
+  migrations: ["src/database/migrations/*.ts"],
 };
 export const AppDataSource = new DataSource(options);

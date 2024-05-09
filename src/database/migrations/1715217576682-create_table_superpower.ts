@@ -5,7 +5,7 @@ export class CreateTableSuperpower1715217576682 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-              name: "superhero",
+              name: "superpower",
               columns: [
                 {
                   name: "id",

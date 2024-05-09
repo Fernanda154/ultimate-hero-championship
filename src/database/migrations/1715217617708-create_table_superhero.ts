@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
 export class CreateTableSuperhero1715217617708 implements MigrationInterface {
 
@@ -20,7 +20,25 @@ export class CreateTableSuperhero1715217617708 implements MigrationInterface {
                 },
               ],
             })
-          );
+        );
+        await queryRunner.createForeignKey(
+          "superhero",
+          new TableForeignKey({
+              columnNames: ["attributeId"],
+              referencedColumnNames: ["id"],
+              referencedTableName: "attribute",
+              onDelete: "SET NULL",
+          })
+        );
+        await queryRunner.createForeignKey(
+          "superhero",
+          new TableForeignKey({
+              columnNames: ["powerId"],
+              referencedColumnNames: ["id"],
+              referencedTableName: "superpower",
+              onDelete: "SET NULL",
+          })
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

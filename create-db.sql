@@ -1,7 +1,7 @@
-CREATE DATABASE superhero
+CREATE DATABASE UHC
   WITH
     OWNER = postgres
     ENCODING = 'UTF8'
     CONNECTION LIMIT = -1
 
-\c superhero;
+\c UHC;

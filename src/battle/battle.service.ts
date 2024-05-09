@@ -1,11 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBattleDto } from './dto/create-battle.dto';
 import { UpdateBattleDto } from './dto/update-battle.dto';
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm';
+import { Battle } from './entities/battle.entity';
+import { SuperHero } from 'src/super_hero/entities/super_hero.entity';
 
 @Injectable()
 export class BattleService {
-  create(createBattleDto: CreateBattleDto) {
-    return 'This action adds a new battle';
+  constructor(
+    @InjectRepository(Battle)
+    private readonly battleRepository: Repository<Battle>
+  ){
+  }
+  async create(createBattleDto: CreateBattleDto) {
+    
+    const superpower = this.battleRepository.create(createBattleDto);
+    return await this.battleRepository.save(superpower);
   }
 
   findAll() {
