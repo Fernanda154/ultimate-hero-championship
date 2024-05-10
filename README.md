@@ -31,6 +31,11 @@
 ```bash
 $ yarn install
 ```
+## Running database
+```bash
+# migrations
+$ yarn typeorm migration:run -d data-source.ts
+```
 
 ## Running the app
 
